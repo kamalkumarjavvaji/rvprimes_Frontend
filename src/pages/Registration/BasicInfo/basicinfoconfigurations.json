@@ -1,0 +1,141 @@
+[
+    {
+        "label": "FirstName",
+        "type": "text",
+        "placeholder": "First name as per ID proof",
+        "name": "firstname",
+        "notes":"As per ID proof",
+        "value": "",
+        "error": "",
+        "validationRules": [
+            "REQUIRED"
+        ]
+    },
+    {
+        "label":"LastName",
+        "type":"text",
+        "placeholder":"Enter your lastname",
+        "name":"lastname",
+        "value":"",
+        "error":"",
+        "validationRules":[
+            "REQUIRED"
+        ]
+    },
+    {
+        "label": "Relation",
+        "tag": "select",
+        "name": "relativeRelation",
+        "options": [
+            "S/O - Son of",
+            "D/O - Daughter of",
+            "W/O - Wife of",
+            "H/O - Husband of",
+            "C/O - Care of",
+            "G/O - Guardian of",
+            "F/O - Father of",
+            "M/O - Mother of"
+        ],
+        "values": ["S/O", "D/O", "W/O", "H/O", "C/O", "G/O", "F/O", "M/O"],
+        "value": "",
+        "error": "",
+        "validationRules": []
+    },
+    {
+        "label": "Name",
+        "type": "text",
+        "placeholder": "Enter name",
+        "name": "relativeName",
+        "value": "",
+        "error": "",
+        "validationRules": []
+    },
+    {
+        "label":"Mobile Number",
+        "type":"tel",
+        "placeholder":"Enter your mobile number",
+        "name":"mobileNumber",
+         "notes":"OTP verification required",
+        "value":"",
+        "error":"",
+        "validationRules":[
+            "REQUIRED",
+            "MOBILE"
+        ]
+    },
+    {
+        "label":"Email Address",
+        "type":"email",
+        "placeholder":"Enter your email address",
+        "name":"email",
+        "notes":"Unique email required ",
+        "value":"",
+        "error":"",
+        "validationRules":[
+            "REQUIRED",
+            "EMAIL"
+        ]
+    },
+    {
+        "label": "Password",
+        "type": "password",
+        "placeholder": "Create a strong password",
+        "name": "password",
+        "notes": "At least 8 characters with an uppercase letter, lowercase letter, number, and symbol",
+        "value": "",
+        "error": "",
+        "validationRules": [
+            "REQUIRED",
+            "PASSWORD"
+        ]
+    },
+    {
+        "label": "Confirm Password",
+        "type": "password",
+        "placeholder": "Re-enter your password",
+        "name": "confirmPassword",
+        "value": "",
+        "error": "",
+        "validationRules": [
+            "REQUIRED",
+            "MATCH_PASSWORD"
+        ]
+    },
+{
+        "label": "Date of Birth",
+        "type": "date",
+        "name": "dateofbirth",
+        "placeholder": "Select your date of birth",
+        "notes":"For KYC validation",
+        "value": "",
+        "error": "",
+        "validationRules": [
+            "REQUIRED",
+             "AGE_18_TO_60"
+            
+        ]
+    },
+     {
+        "label": "Gender",
+        "tag": "select",
+        "name": "gender",
+        "options": [
+            "Male",
+            "Female",
+            "Others"
+        ],
+        "values": [
+            "M",
+            "F",
+            "Oth"
+        ],
+        "value": "",
+        "error": "",
+        "validationRules": [
+            
+        ]
+    }
+
+
+
+]

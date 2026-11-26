@@ -1,0 +1,132 @@
+.header {
+  position: relative;
+  height: 76px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e8ed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+}
+
+.header-right {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mobile-menu-toggle {
+  display: none;
+}
+
+.welcome {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.user-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #e7eef8;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.user-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  object-fit: cover;
+}
+
+.bell {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border: 0;
+  background: transparent;
+  color: #172b3a;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.bell:disabled {
+  cursor: default;
+}
+
+.bell-count {
+  position: absolute;
+  top: -5px;
+  right: -8px;
+  min-width: 17px;
+  height: 17px;
+  padding: 0 4px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  background: #ef4444;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.mobile-title {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .header {
+    height: 64px;
+    justify-content: space-between;
+    padding: 0 14px;
+  }
+
+  .header .universal-search { position: static; transform: none; width: auto; flex: 1 1 130px; margin: 0 8px; }
+
+  .header-right {
+    gap: 12px;
+  }
+
+  .header-brand { flex: 0 0 auto; }
+
+  .mobile-title {
+    display: block;
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .mobile-menu-toggle {
+    display: grid;
+    width: 38px;
+    height: 38px;
+    flex: 0 0 auto;
+    place-items: center;
+    border: 1px solid #e1e8f2;
+    border-radius: 8px;
+    background: #fff;
+    color: #102a43;
+    cursor: pointer;
+    font: inherit;
+    font-size: 21px;
+  }
+
+  .welcome {
+    display: none;
+  }
+}

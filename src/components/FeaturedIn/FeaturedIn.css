@@ -1,0 +1,108 @@
+.featured-in {
+  background: var(--cream, #f7f3ec);
+  padding: 64px 0 56px;
+  overflow: hidden;
+}
+
+.featured-in-label {
+  margin: 0 0 36px;
+  padding: 0 16px;
+  text-align: center;
+  font-family: var(--font-sans, system-ui, -apple-system, sans-serif);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #3b4557;
+}
+
+/* Soft fade on both edges so cards glide in and out */
+.featured-in-viewport {
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+          mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+}
+
+.featured-in-track {
+  --card-w: 258px;
+  --gap: 26px;
+  display: flex;
+  width: max-content;
+  margin: 0;
+  padding: 6px 0 16px;
+  list-style: none;
+  animation: featuredScroll 34s linear infinite;
+}
+
+.featured-in-viewport:hover .featured-in-track {
+  animation-play-state: paused;
+}
+
+.featured-card {
+  position: relative;
+  flex: 0 0 auto;
+  width: var(--card-w);
+  aspect-ratio: 260 / 170;
+  margin-right: var(--gap);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #0f1c38;
+  box-shadow: 0 10px 24px rgba(11, 21, 38, 0.18);
+}
+
+.featured-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.featured-card-name {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 9px 8px 8px;
+  text-align: center;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: max(11px, calc(var(--card-w) * 0.05));
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  background: linear-gradient(0deg, rgba(7, 14, 28, 0.92), rgba(7, 14, 28, 0.6));
+  border-top: 1px solid #c9a84c;
+  white-space: nowrap;
+}
+
+@keyframes featuredScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .featured-in { padding: 52px 0 44px; }
+  .featured-in-label { margin-bottom: 28px; }
+  .featured-in-track { --card-w: 226px; --gap: 20px; }
+}
+
+/* Phones */
+@media (max-width: 600px) {
+  .featured-in { padding: 44px 0 36px; }
+  .featured-in-label { font-size: 12px; letter-spacing: 0.24em; margin-bottom: 22px; }
+  .featured-in-track { --card-w: 194px; --gap: 14px; animation-duration: 28s; }
+  .featured-in-viewport {
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 5%, #000 95%, transparent 100%);
+            mask-image: linear-gradient(90deg, transparent 0, #000 5%, #000 95%, transparent 100%);
+  }
+}
+
+/* People who prefer less motion get a swipeable row instead of auto-scroll */
+@media (prefers-reduced-motion: reduce) {
+  .featured-in-track { animation: none; }
+  .featured-in-viewport { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
+  .featured-card[aria-hidden='true'] { display: none; }
+}

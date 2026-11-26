@@ -1,0 +1,181 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import addressConfig from "./addressinfoconfigurations.json";
+import { Input } from "../../../components/forms/Input/Input.jsx";
+import { Select } from "../../../components/forms/Select/Select.jsx";
+import TextArea from "../../../components/forms/TextArea/TextArea.jsx";
+import { validateForm } from "../../Registration/formvalidation.js";
+import { useCountries } from "../../../hooks/useCountries.js";
+import { useStates } from "../../../hooks/useStates.js";
+import { getStates } from "../../../api/statesApi.js";
+import { validateField } from "./addressInfoValidateField.js";
+import { useSelector, useDispatch } from "react-redux";
+import { saveAddressInfo } from '../../../store/slices/RegistartionSlice.js'
+import { createUser } from "../../../services/userService.js";
+import styles from './AddressInfo.module.css'
+
+function AddressForm() {
+  const navigate = useNavigate();
+  // const [formData, setFormData] = useState(addressConfig);
+  const savedData = useSelector(
+    state => state.registration?.addressInfo || {}
+  )
+  const dispatch = useDispatch()
+  const basicInfo = useSelector(state => state.registration?.basicInfo || {});
+  const [saving, setSaving] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [saved, setSaved] = useState(false);
+
+
+
+  const [formData, setFormData] = useState(() => {
+    const initialData = addressConfig.map(field => ({
+      ...field,
+      value: savedData[field.name] || field.value || ""
+    }));
+    const initialCountry = initialData.find((field) => field.name === "country")?.value;
+    const initialStates = getStates(initialCountry).map((state) => state.name);
+    return initialData.map((field) =>
+      field.name === "state" && field.value && !initialStates.includes(field.value)
+        ? { ...field, value: "" }
+        : field
+    );
+  });
+  const country =
+    formData.find((item) => item.name === "country")?.value;
+  const countries = useCountries();
+
+  const { states } = useStates(country);
+
+  const handleChange = (event) => {
+    const isCountryChange = event.target.name === "country";
+    validateField(event, formData, (updatedData) => setFormData(
+      isCountryChange
+        ? updatedData.map((field) => field.name === "state"
+          ? { ...field, value: "", error: "" }
+          : field)
+        : updatedData
+    ));
+  };
+
+  const handleNext = async () => {
+    const { isFormvalid, dataObj, updatedFormData } = validateForm(formData);
+
+    if (!isFormvalid) {
+      setFormData(updatedFormData);
+      return;
+    }
+    dispatch(saveAddressInfo(dataObj));
+    setSaving(true);
+    setSubmitError("");
+    try {
+      await createUser(basicInfo, dataObj);
+      setSaved(true);
+    } catch (error) {
+      setSubmitError(error.message || "Unable to save registration details");
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const handlePrev = () => {
+    navigate("/basic_details");
+
+  }
+  return (
+    <div className={styles.addressContainer}>
+      <h1 className={styles.addressTitle}>
+        Address Information
+      </h1>
+
+      <p className={styles.addressSubtitle}>
+        Please provide your address details
+      </p>
+
+      <div className={styles.addressSection}>
+
+        <div className={styles.sectionHeader}>
+          Address Details
+        </div>
+
+        <div className={styles.addressGrid}>
+          {formData.map((item) => {
+            let updatedItem = { ...item };
+
+            if (item.type === "select") {
+              updatedItem.options =
+                item.name === "country"
+                  ? countries
+                  : item.name === "state"
+                    ? states
+                    : item.options || [];
+            }
+
+            if (item.name === "state" && country && states.length === 0) {
+              return (
+                <Input
+                  key={item.name}
+                  {...updatedItem}
+                  type="text"
+                  placeholder="Enter state, province, or region"
+                  handleChange={handleChange}
+                />
+              );
+            }
+
+            switch (item.type) {
+              case "textarea":
+                return (
+                  <TextArea
+                    key={item.name}
+                    {...updatedItem}
+                    onChange={handleChange}
+                  />
+                );
+
+              case "select":
+                return (
+                  <Select
+                    key={item.name}
+                    {...updatedItem}
+                    handleChange={handleChange}
+                  />
+                );
+
+              default:
+                return (
+                  <Input
+                    key={item.name}
+                    {...updatedItem}
+                    type={item.inputType || "text"}
+                    handleChange={handleChange}
+                  />
+                );
+            }
+          })}
+        </div>
+      </div>
+
+      <div className={styles.buttonContainer}>
+        <button
+          onClick={handlePrev}
+          className={styles.prevBtn}
+        >
+          Previous
+        </button>
+
+        <button
+          onClick={handleNext}
+          className={styles.nextBtn}
+          disabled={saving || saved}
+        >
+          {saving ? "Saving..." : saved ? "Saved" : "Save"}
+        </button>
+      </div>
+      {saved && <p role="status">Your details have been saved.</p>}
+      {submitError && <p role="alert">{submitError}</p>}
+    </div>
+  );
+}
+
+export default AddressForm;

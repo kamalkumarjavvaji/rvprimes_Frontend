@@ -1,0 +1,428 @@
+.projects-content {
+  padding: 24px;
+}
+
+.projects-content > .project-card {
+  width: 100%;
+  border: 1px solid #e1e5eb;
+  box-shadow: none;
+  transform: none;
+  transition: none;
+}
+
+.projects-content > .project-card:hover,
+.projects-content > .project-card:focus-within {
+  border-color: #e1e5eb;
+  box-shadow: none;
+  transform: none;
+}
+
+.projects-content > .project-card::before {
+  display: none;
+}
+
+.projects-content .card-header {
+  position: relative;
+  justify-content: flex-end;
+  margin-bottom: 18px;
+}
+
+.projects-content .card-header h3 {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 20px;
+  text-align: center;
+}
+
+.projects-content table {
+  min-width: 760px;
+}
+
+.project-name-cell strong {
+  display: block;
+}
+
+.project-editor-page {
+  display: grid;
+  gap: 22px;
+  width: 100%;
+  padding: 24px;
+  border: 1px solid #e1e5eb;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.project-editor-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #edf0f4;
+}
+
+.project-editor-header h2 {
+  grid-column: 2;
+  grid-row: 1;
+  margin: 0;
+  font-size: 22px;
+  text-align: center;
+}
+
+.project-back-button {
+  align-self: start;
+  justify-self: start;
+  padding: 0;
+  grid-column: 1;
+  grid-row: 1;
+  border: 0;
+  background: transparent;
+  color: #155ac7;
+  font: inherit;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.project-table-row {
+  cursor: pointer;
+}
+
+.project-table-row:focus-visible {
+  outline: 2px solid #155ac7;
+  outline-offset: -2px;
+}
+
+.add-project-button,
+.project-cancel-button {
+  min-height: 40px;
+  padding: 0 14px;
+  border: 1px solid #155ac7;
+  border-radius: 5px;
+  background: #155ac7;
+  color: #fff;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.add-project-button span {
+  margin-right: 5px;
+  font-size: 18px;
+}
+
+.add-project-button:disabled,
+.project-cancel-button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.project-modal-backdrop {
+  position: fixed;
+  z-index: 10;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgb(10 22 36 / 48%);
+}
+
+.project-editor-form label {
+  display: grid;
+  gap: 7px;
+}
+
+.project-editor-form {
+  display: grid;
+  width: min(100%, 900px);
+  margin-inline: auto;
+  gap: 16px;
+}
+
+.project-modal-close {
+  width: 36px;
+  height: 36px;
+  border: 0;
+  background: transparent;
+  color: #435064;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.project-media-section {
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+  margin: 0;
+  padding: 14px;
+  border: 1px solid #dce2e9;
+  border-radius: 6px;
+}
+
+.project-media-section legend {
+  padding: 0 6px;
+  color: #202b38;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.project-media-section input[type="file"] {
+  padding: 8px;
+  font-size: 13px;
+}
+
+.project-media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+}
+
+.project-media-item {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+  margin: 0;
+  padding: 8px;
+  border: 1px solid #dce2e9;
+  border-radius: 5px;
+}
+
+.project-media-item img,
+.project-media-item video {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: #161616;
+}
+
+.project-media-item figcaption {
+  overflow: hidden;
+  color: #435064;
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.project-media-remove {
+  justify-self: start;
+  padding: 4px 0;
+  border: 0;
+  background: transparent;
+  color: #b42318;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.project-editor-form label {
+  color: #313d4c;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.project-editor-form input,
+.project-editor-form select,
+.project-editor-form textarea {
+  width: 100%;
+  min-height: 42px;
+  padding: 8px 10px;
+  border: 1px solid #cbd3dd;
+  border-radius: 4px;
+  background: #fff;
+  color: #161616;
+  font: inherit;
+  font-size: 14px;
+}
+
+.project-editor-form input[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.project-editor-form input[type="number"]::-webkit-inner-spin-button,
+.project-editor-form input[type="number"]::-webkit-outer-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+.project-editor-form textarea {
+  min-height: 84px;
+  resize: vertical;
+}
+
+.project-editor-form input:focus,
+.project-editor-form select:focus,
+.project-editor-form textarea:focus {
+  border-color: #155ac7;
+  outline: 2px solid rgb(21 90 199 / 16%);
+}
+
+.project-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.project-form-error {
+  margin: -4px 0 0;
+  color: #b42318;
+  font-size: 13px;
+}
+
+.project-form-actions {
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 4px;
+}
+
+.project-cancel-button {
+  border-color: #cbd3dd;
+  background: #fff;
+  color: #313d4c;
+}
+
+.project-form-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 4px;
+}
+
+@media (max-width: 700px) {
+  .projects-content {
+    padding: 14px;
+  }
+
+  .projects-content .dashboard-card {
+    padding: 14px;
+  }
+
+  .project-editor-page {
+    padding: 16px;
+  }
+
+  .project-editor-header {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    gap: 10px;
+  }
+
+  .project-editor-header .project-back-button {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+  }
+
+  .project-editor-header h2 {
+    grid-column: 1;
+    grid-row: 2;
+  }
+}
+
+@media (max-width: 420px) {
+  .project-form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.project-editor-form input[readonly] {
+  background: #f3f5f8;
+  color: #4d5968;
+}
+
+.project-currency-input,
+.project-input-with-unit {
+  display: grid;
+  align-items: center;
+  border: 1px solid #cbd3dd;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.project-currency-input {
+  grid-template-columns: auto 1fr;
+  padding-left: 10px;
+}
+
+.project-currency-input span {
+  color: #596575;
+  font-size: 14px;
+}
+
+.project-input-with-unit {
+  grid-template-columns: minmax(0, 1fr) 120px;
+}
+
+.project-currency-input input,
+.project-input-with-unit input,
+.project-input-with-unit select {
+  border: 0;
+}
+
+.project-currency-input input:focus,
+.project-input-with-unit input:focus,
+.project-input-with-unit select:focus {
+  outline: 0;
+}
+
+.project-currency-input:focus-within,
+.project-input-with-unit:focus-within {
+  border-color: #155ac7;
+  outline: 2px solid rgb(21 90 199 / 16%);
+}
+
+/* Land area calculator */
+.land-calculator {
+  border: 1px solid #d9e2ec;
+  border-radius: 12px;
+  background: #f7faff;
+  padding: 16px;
+  display: grid;
+  gap: 12px;
+}
+.land-calculator-header { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px; }
+.land-calculator-header h4 { margin: 0; font-size: 16px; color: #12355b; }
+.land-calculator-header span { font-size: 12px; color: #627d98; }
+.land-calculator-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.land-calculator-chips button {
+  border: 1px solid #b6c6da; background: #fff; color: #12355b;
+  border-radius: 999px; padding: 6px 14px; font-size: 13px; cursor: pointer;
+}
+.land-calculator-chips button.active { background: #12355b; color: #fff; border-color: #12355b; }
+.land-calculator-results { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.land-calculator-results > div {
+  background: #fff; border: 1px solid #e1e8f0; border-radius: 10px; padding: 12px;
+  display: grid; gap: 4px;
+}
+.land-calculator-results small { color: #627d98; font-size: 12px; }
+.land-calculator-results strong { color: #0b6b3a; font-size: 17px; word-break: break-word; }
+.land-calculator-note { margin: 0; font-size: 13px; color: #334e68; }
+.land-calculator-warning { margin: 0; font-size: 13px; color: #b42318; }
+@media (max-width: 600px) { .land-calculator-results { grid-template-columns: 1fr; } }
+
+.land-calculator-steps { background: #fff; border: 1px solid #e1e8f0; border-radius: 10px; padding: 12px 14px; font-size: 13px; color: #334e68; }
+.land-calculator-steps ol { margin: 8px 0 0; padding-left: 20px; display: grid; gap: 4px; }
+.land-calculator-table-wrap { overflow-x: auto; }
+.land-calculator-table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid #e1e8f0; border-radius: 10px; font-size: 13px; }
+.land-calculator-table caption { text-align: left; font-weight: 600; color: #12355b; padding: 0 0 6px; }
+.land-calculator-table th, .land-calculator-table td { padding: 8px 10px; text-align: left; border-bottom: 1px solid #eef2f7; white-space: nowrap; }
+.land-calculator-table th { background: #eef4fb; color: #12355b; font-weight: 600; }
+.land-calculator-table tr.selected td { background: #e6f6ec; font-weight: 600; }
+
+.land-calculator-inline { display: flex; gap: 8px; }
+.land-calculator-inline input { flex: 1; min-width: 0; }
+.land-calculator-add { border: 0; background: #12355b; color: #fff; border-radius: 8px; padding: 0 14px; font-size: 13px; cursor: pointer; white-space: nowrap; }
+.land-calculator-add:disabled { opacity: .5; cursor: not-allowed; }
+.land-calculator-reverse { display: grid; gap: 6px; }
+.land-calculator-table-tools { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; color: #12355b; }
+.land-calculator-table-tools input { max-width: 260px; }
+.land-calculator-scroll { overflow: auto; max-height: 360px; border: 1px solid #e1e8f0; border-radius: 10px; }
+.land-calculator-scroll .land-calculator-table { border: 0; }
+.land-calculator-scroll .land-calculator-table th { position: sticky; top: 0; }
+
+.units-area-hint { display: block; margin-top: 4px; font-size: 12px; color: #0b6b3a; }
+.land-calculator-addrow { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 13px; color: #334e68; }

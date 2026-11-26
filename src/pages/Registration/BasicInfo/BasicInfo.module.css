@@ -1,0 +1,295 @@
+/* BasicInfo.module.css */
+
+.basicContainer {
+    max-width: 1100px;
+    width: 95%;
+    margin: 40px auto;
+    padding: 35px;
+    background: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+}
+
+.basicTitle {
+    text-align: center;
+    color: #0d347c;
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    font-family: "Roboto";
+}
+
+.basicSubtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 35px;
+    font-size: 16px;
+    font-family: "Roboto";
+}
+
+.basicSection {
+    border: 1px solid #f1d98c;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.basicSection + .basicSection {
+    margin-top: 24px;
+}
+
+.sectionHeader {
+    background: #fff8df;
+    padding: 18px 25px;
+    font-size: 28px;
+    font-weight: 600;
+    color: #0d347c;
+    border-bottom: 1px solid #f1d98c;
+    font-family: "Roboto";
+    text-align: center;
+}
+
+.basicGrid {
+    padding: 30px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.basicGrid :global(.input-group:has(#firstname)) {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.basicGrid :global(.input-group:has(#lastname)) {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.basicGrid :global(.select-group:has(#relativeRelation)) {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.basicGrid :global(.input-group:has(#relativeName)) {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.mobileField {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    min-width: 0;
+}
+
+.countryCodeLabel {
+    display: flex;
+    flex: 0 0 clamp(130px, 35%, 205px);
+    flex-direction: column;
+    color: #222;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: "Roboto";
+}
+
+.countryCodeLabel select {
+    width: 100%;
+    margin-top: 8px;
+    padding: 14px 10px;
+    border: 1px solid #d9d9d9;
+    border-radius: 10px;
+    background: #fff;
+    font: inherit;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.mobileField :global(.input-group) {
+    flex: 1;
+    min-width: 0;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.prevBtn,
+.nextBtn {
+    border: none;
+    padding: 12px 35px;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: 600;
+    min-width: 130px;
+    font-family: "Roboto";
+}
+
+.prevBtn {
+    background: #d9d9d9;
+    color: #333;
+}
+
+.prevBtn:disabled {
+    background: #eeeeee;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.nextBtn {
+    background: #0d347c;
+    color: white;
+}
+
+.nextBtn:hover {
+    background: #08265f;
+}
+
+.successBackdrop {
+    position: fixed;
+    z-index: 2000;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    background: rgba(3, 17, 38, 0.58);
+}
+
+.successDialog {
+    width: min(100%, 430px);
+    padding: 32px 28px;
+    border: 1px solid #f1d98c;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 18px 55px rgba(0, 0, 0, 0.22);
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+}
+
+.successIcon {
+    display: grid;
+    width: 52px;
+    height: 52px;
+    margin: 0 auto 16px;
+    place-items: center;
+    border-radius: 50%;
+    background: #eaf8f1;
+    color: #25855a;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.successDialog h3 {
+    margin: 0;
+    color: #0d347c;
+    font-size: 22px;
+}
+
+.successDialog p {
+    margin: 12px 0 22px;
+    color: #536174;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.successButton {
+    min-width: 120px;
+    min-height: 42px;
+    padding: 0 22px;
+    border: 0;
+    border-radius: 8px;
+    background: #0d347c;
+    color: #fff;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.successButton:hover {
+    background: #08265f;
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 768px) {
+    .basicContainer {
+        padding: 25px;
+    }
+
+    .basicTitle {
+        font-size: 28px;
+    }
+
+    .basicSubtitle {
+        font-size: 16px;
+    }
+
+    .sectionHeader {
+        font-size: 24px;
+        padding: 15px 20px;
+    }
+
+    .basicGrid {
+        grid-template-columns: 1fr;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .basicGrid :global(.input-group:has(#firstname)),
+    .basicGrid :global(.input-group:has(#lastname)),
+    .basicGrid :global(.select-group:has(#relativeRelation)),
+    .basicGrid :global(.input-group:has(#relativeName)) {
+        grid-column: auto;
+        grid-row: auto;
+    }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 480px) {
+    .basicContainer {
+        width: 100%;
+        margin: 15px;
+        padding: 18px;
+        border-radius: 12px;
+    }
+
+    .basicTitle {
+        font-size: 24px;
+    }
+
+    .basicSubtitle {
+        font-size: 14px;
+        margin-bottom: 25px;
+    }
+
+    .sectionHeader {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .mobileField {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .countryCodeLabel {
+        flex: 1 1 auto;
+    }
+
+    .buttonContainer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .prevBtn,
+    .nextBtn {
+        width: 100%;
+        max-width: 280px;
+    }
+}
